@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>雷鋒網爬蟲 結果</title>
+</head>
+<body>
+<form role = "search" method="get" id = "searchform" action = '/search/'>
+  {% csrf_token %}
+  <input type="search" name = "q" placeholder="搜索" required>
+  <button type="submit">搜索</button>
+</form>
+
+
+
+<table border="1">
+    <tr>
+        <th>Titles</th>
+        <th>Authors</th>
+        <th>Tags</th>
+        <th>Time added</th>
+    </tr>
+    {%for result in results%}
+    <tr>
+        
+        <td width = '500' height = '50'>
+        <a href = '{{result.Link}}' target = "_blank"> {{result.Title}}</a>
+        </td> 
+        
+        <td width = '100' height = '50'>
+        <a>{{result.Author}}</a>
+        </td>
+        
+        <td width = '200' height = '50'>
+        <a>{{result.Tag}}</a>
+        </td>
+        
+        <td width = '100' height = '50'>
+        <a>{{result.Time}}</a>
+        </td>
+        
+        
+    </tr>
+    {%endfor%}
+</table>
+</body>
+</html>
+
+
+
+
+
